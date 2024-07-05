@@ -1,0 +1,103 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.forum-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #454265, #191822);
+  height: 100vh;
+  color: black;
+  padding: 50px 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.forum-title {
+  color: white;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 70px;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.threads-container {
+  width: 80%;
+  max-width: 800px;
+  background-color: #ebebeb;
+  border-radius: 8px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
+}
+
+.thread-box {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.thread-box:hover {
+  background-color: #dcdcdc;
+}
+
+.profile-pic-forum {
+    height: 45px;
+    width: 45px;
+}
+
+.thread-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.thread-name {
+  font-size: 20px;
+  margin: 0;
+  text-align: left;
+}
+
+.thread-info {
+  font-size: 14px;
+  color: #4D4D4D;
+  margin-top: 5px;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.thread-stats {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.thread-stats span {
+  font-size: 14px;
+  color: #4D4D4D;
+  margin-bottom: 5px;
+}
+
+.thread-box + .thread-box {
+  border-top: 1px solid #ccc;
+}
+
+.create-thread-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    background-color: #770248;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-thread-button:hover {
+    background-color: rgba(166, 0, 100, 0.9); 
+  }

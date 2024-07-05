@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2A2A2A;
+    color: white; 
+}
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    background-image: url('./assets/background.png');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 60px 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.site-name {
+    font-family: Bebas Neue, sans-serif;
+    font-size: 100px;
+    margin-bottom: 0px;
+}
+
+.catch-phrase {
+    margin-top: 0px;
+    font-size: 25px;
+}
+
+.main-content {
+    background: linear-gradient(to bottom, #454265, #191822); 
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.trending-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.darker-opacity {
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 2px;
+}
+
+.trending-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 35px;
+    margin-left:50px;
+    margin-right: 50px;
+}
+
+.trending-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    background-size:cover;
+    width: 300px;
+    height: 150px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-family: Bebas Neue, sans-serif;
+    text-align: center;
+    box-shadow: 7px 0 7px rgba(0, 0, 0, 0.4);
+}
+
+.trending-card:hover, .explore-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+
+.trending-card a, .explore-card a {
+    color:white;
+}
+
+.explore-section {
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+.explore-header {
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-family: Bebas Neue, sans-serif;
+    text-align: center;
+}
+
+.explore-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 35px;
+    margin-left:50px;
+    margin-right: 50px;
+}
+
+.explore-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 200px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    text-align: center;
+    font-family: Bebas Neue, sans-serif;
+    background-size: cover;
+    background-position: center; 
+    box-shadow: 7px 0 7px rgba(0, 0, 0, 0.4);
+}

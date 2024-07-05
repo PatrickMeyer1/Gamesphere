@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.create-thread-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #454265, #191822);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .thread-container {
+    margin-top: 50px;
+    background-color: #ebebeb;
+    padding: 15px 60px 10px 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    width: 500px;
+  }
+
+  .create-thread-header {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: black;
+    text-align: left;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #191822;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #191822;
+    resize: none;
+  }
+
+  .icon-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  
+  .thread-icon {
+    margin: 0 10px;
+    cursor: pointer;
+  }
+
+  .thread-icon {
+    margin: 0 10px;
+  }
+  
+  .multi-select {
+    color: #191822;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+  
+.button-container button {
+    background-color: #770248;
+    color: white;
+    border: none;
+    padding: 12px 70px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+  
+.button-container button:hover {
+    background-color: rgba(166, 0, 100, 0.9);
+}

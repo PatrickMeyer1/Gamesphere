@@ -1,0 +1,247 @@
+.thread-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, #454265, #191822);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .thread-content-container {
+    width: 80%;
+    max-width: 800px;
+    margin-top: 50px; 
+  }
+  
+  .thread-header-post {
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    padding-left:15px;
+    background: linear-gradient(to right, #312630, #939393);
+  }
+  
+  .thread-title-post {
+    margin-top: 5px;
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 0px;
+  }
+  
+  .thread-info-post {
+    margin-top: 0;
+    margin-bottom: 0px;
+    font-size: 14px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+  }
+
+  .thread-info-post p{
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  .title-profile-icon {
+    height: 24px;
+    width:24px;
+    margin-top: 3px;
+    margin-right: 5px;
+  }
+
+  .clock-icon {
+    height: 24px;
+    width:24px;
+    margin-right:5px;
+    margin-top: 3px;
+  }
+
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .pagination ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .pagination li {
+    margin-right: 0;
+    cursor: pointer;
+    color: black;
+    font-size: 15px;
+    border: solid black 1px;
+    padding: 6px 9px 6px 9px;
+    background-color: #EBEBEB;
+  }
+
+  .pagination li:last-child {
+    margin-left: 15px;
+  }
+  
+  .pagination li:hover,
+  .pagination li.active {
+    color: #007bff;
+    text-decoration: underline;
+  }
+
+  .thread-comment {
+    background-color: #EBEBEB;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    color: black;
+  }
+
+  .thread-main {
+    margin-left: 65px;
+    width: 100%;
+  }
+
+  .thread-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 65px;
+  }
+
+  .thread-profile img{
+    height: 50px;
+  }
+
+  .thread-profile p {
+    margin-bottom: 0px;
+  }
+
+  .thread-author {
+    margin-top: 2px;
+    color: #007bff;
+  }
+
+  .thread-time-like {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    justify-content: space-between;
+  }
+
+  .thread-time-like p{
+    margin-top: 5px;
+  }
+
+  .thread-like img{
+    height: 30px;
+  }
+
+  .like-share-icon {
+    cursor: pointer;
+    margin-left: 7px;
+  }
+
+  .like-share-icon:hover {
+    transform: scale(1.05);
+  }
+
+  .thread-comment-post {
+    background-color: #EBEBEB;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.6);
+  }
+
+  .thread-comment-post textarea{
+    background-color: #EBEBEB;
+    border: 0;
+    margin-left: 20px;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    width: 100%;
+  }
+
+  .thread-comment-post textarea:focus {
+    outline: none;
+  }
+
+  .thread-comment-post img{
+    background-color: #EBEBEB;
+    border: 0;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 30px;
+  }
+
+  .thread-comment-post img:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+  
+  .sorting-dropdown {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sort-by-text {
+    margin-right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .sort-dropdown-container {
+    position: relative;
+  }
+  
+  .selected-sort {
+    color: black;
+    padding: 8px 12px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .selected-sort:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .dropdown-icon {
+    margin-left: 5px;
+  }
+  
+  .select-menu {
+    color: black;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 10;
+  }
+  
+  .select-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    
+  }
+  
+  .select-menu ul li {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .select-menu ul li:hover {
+    background-color: #f0f0f0;
+  }

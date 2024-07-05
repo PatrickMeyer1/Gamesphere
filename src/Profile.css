@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #454265, #191822);
+  color: black;
+  height: 100vh;
+  padding: 50px 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  max-width: 600px;
+  background-color: #ebebeb;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
+}
+
+.profile-pic-edit {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profile-info {
+  margin-left: 20px;  
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.profile-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  margin: 0;
+}
+
+.profile-bio {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-details span {
+  font-size: 14px;
+  color: #4D4D4D;
+}
+
+.profile-content {
+  width: 80%;
+  max-width: 600px;
+  background-color: #ebebeb;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
+}
+
+.section-title {
+  margin-top: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.profile-interests {
+  text-align: center;
+}
+
+.profile-interests, .profile-achievements, .profile-activity, .profile-favorites {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.profile-achievements li, .profile-activity li, .profile-favorites li {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.profile-statistics {
+  display: flex;
+  justify-content: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: 50px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #4D4D4D;
+}
+
+.stat-img {
+    width: 40px;
+    height: 40px;
+}

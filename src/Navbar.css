@@ -1,0 +1,149 @@
+
+body {
+    font-family: Roboto, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #2A2A2A;
+    padding: 15px;
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 80px;
+    margin-left: 20px;
+}
+
+.search-bar-container {
+    position: relative;
+}
+
+.search-bar {
+    background-image: url(./assets/search.png);
+    background-repeat: no-repeat;
+    background-position: 3px 5px;
+    text-indent: 25px;
+    width: 350px;
+    max-width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 20px;
+}
+
+.search-bar::placeholder {
+    color: #A2A2A2;
+}
+
+.search-dropdown {
+    position: absolute;
+    margin-top: 10px;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    z-index: 20;
+    padding: 10px;
+    border-radius: 5px;
+    width: 90%; 
+    display: none;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.search-dropdown.show {
+    display: flex;
+}
+
+.search-dropdown button {
+    background: #770248;
+    color: white;
+    border: none;
+    padding: 10px 5px;
+    text-align: center;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 5px 5px 0;
+    transition: background-color 0.3s;
+}
+
+.search-dropdown button:last-child {
+    margin-right: 0;
+}
+
+.search-dropdown button:hover {
+    background-color: rgba(166, 0, 100, 0.9); 
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-links .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    margin-left: 40px;
+}
+
+.nav-links .nav-link a,
+.profile a,
+.notification-bell a {
+    color: white;
+    text-decoration: none;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.profile-text {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.notification-bell {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.notification-bell img {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.notification-bell img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
