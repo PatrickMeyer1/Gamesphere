@@ -254,7 +254,7 @@ function ForumPage() {
       username: 'EsportsEn10',
       publishedDate: 'July 4, 2024',
       replies: 2,
-      views: 0, 
+      views: 3, 
       category: 'Tournaments'
     },
     {
