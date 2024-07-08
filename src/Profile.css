@@ -7,7 +7,7 @@
   align-items: center;
   background: linear-gradient(to bottom, #454265, #191822);
   color: black;
-  height: 100vh;
+  height: 100%;
   padding: 50px 0;
   font-family: 'Roboto', sans-serif;
 }
@@ -116,4 +116,22 @@
 .stat-img {
     width: 40px;
     height: 40px;
+}
+
+.profile-charts {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+  flex-direction: column; 
+}
+
+.chart-container {
+  margin: 20px;
+  width: 500px;
+}
+
+.profile-charts h3 {
+  text-align: center;
+  margin: 0;
 }
