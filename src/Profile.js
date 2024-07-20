@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Profile.css';
 import profilePic from './assets/PFP.jpg';
-import postPic from './assets/post.png';
+import postPic from './assets/postCount.png';
 import commentPic from './assets/comment.png';
 import likePic from './assets/like.png';
 import ProfileCharts from './ProfileCharts';
@@ -9,6 +10,11 @@ import ProfileCharts from './ProfileCharts';
 function Profile() {
     return (
         <div className="profile-page">
+            <div className="breadcrumbs">
+                <Link to="/">Home</Link> &gt;<span>Profile</span>
+            </div>
+            
+            <div className="profile-content">
             <div className="profile-header">
                 <img src={profilePic} alt="Profile" className="profile-pic-edit" />
                 <div className="profile-info">
@@ -20,7 +26,6 @@ function Profile() {
                     </div>
                 </div>
             </div>
-            <div className="profile-content">
                 <h2 className="section-title">Interests</h2>
                 <p className="profile-interests">Gaming, Esports, Hardware, Technology</p>
       

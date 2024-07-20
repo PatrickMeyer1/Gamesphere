@@ -1,6 +1,6 @@
 import React from 'react';
 import './ForumPage.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import default1 from './assets/default1.png';
 import default2 from './assets/default2.png';
 import default3 from './assets/default3.png';
@@ -11,7 +11,7 @@ import default7 from './assets/default7.png';
 import default8 from './assets/default8.png';
 
 function ForumPage() {
-  const { category } = useParams();
+  const { category, searchQuery  } = useParams();
 
   const threads = [
     {
@@ -48,7 +48,7 @@ function ForumPage() {
       publishedDate: 'July 1, 2024',
       replies: 40,
       views: 1300,
-      category: 'Indie'
+      category: 'General'
     },
     {
       id: 5,
@@ -57,7 +57,7 @@ function ForumPage() {
       publishedDate: 'July 2, 2024',
       replies: 50,
       views: 1800,
-      category: 'Esports'
+      category: 'News'
     },
     {
       id: 6,
@@ -190,8 +190,8 @@ function ForumPage() {
       threadName: 'Best FPS Games of the Year',
       username: 'FPSGamer',
       publishedDate: 'July 2, 2024',
-      replies: 2,
-      views: 0,
+      replies: 25,
+      views: 400,
       category: 'FPS'
     },
     {
@@ -199,8 +199,8 @@ function ForumPage() {
       threadName: 'Discussing Storytelling in Games',
       username: 'StoryLover',
       publishedDate: 'July 3, 2024',
-      replies: 2,
-      views: 0,
+      replies: 15,
+      views: 200,
       category: 'Story'
     },
     {
@@ -208,8 +208,8 @@ function ForumPage() {
       threadName: 'Favorite Gaming Moments of All Time',
       username: 'MemorableGuy',
       publishedDate: 'July 4, 2024',
-      replies: 2, 
-      views: 0,
+      replies: 10, 
+      views: 150,
       category: 'General'
     },
     {
@@ -217,8 +217,8 @@ function ForumPage() {
       threadName: 'Building the Ultimate Gaming PC',
       username: 'PCMasterBuild',
       publishedDate: 'July 4, 2024',
-      replies: 2, 
-      views: 0, 
+      replies: 40, 
+      views: 300, 
       category: 'PC Builds'
     },
     {
@@ -226,8 +226,8 @@ function ForumPage() {
       threadName: 'Best Gaming Keyboards for 2024',
       username: 'KeyboardEmp',
       publishedDate: 'July 4, 2024',
-      replies: 2,
-      views: 0, 
+      replies: 60,
+      views: 600, 
       category: 'Peripherals'
     },
     {
@@ -236,7 +236,7 @@ function ForumPage() {
       username: 'ConsoleGamer',
       publishedDate: 'July 4, 2024',
       replies: 2, 
-      views: 0, 
+      views: 50, 
       category: 'Consoles'
     },
     {
@@ -244,8 +244,8 @@ function ForumPage() {
       threadName: 'Gaming Performance on Latest Smartphones',
       username: 'MobileGamer',
       publishedDate: 'July 4, 2024',
-      replies: 2, 
-      views: 0, 
+      replies: 7, 
+      views: 75, 
       category: 'Phones'
     },
     {
@@ -262,8 +262,8 @@ function ForumPage() {
       threadName: 'Strategies for Building a Competitive Gaming Team',
       username: 'TeamLeader',
       publishedDate: 'July 4, 2024',
-      replies: 2, 
-      views: 0, 
+      replies: 7, 
+      views: 250, 
       category: 'Teams'
     },
     {
@@ -271,8 +271,8 @@ function ForumPage() {
       threadName: 'Latest Gaming Industry News',
       username: 'GamingInsider',
       publishedDate: 'July 4, 2024',
-      replies: 2,
-      views: 0, 
+      replies: 10,
+      views: 350, 
       category: 'News'
     },
     {
@@ -280,41 +280,112 @@ function ForumPage() {
       threadName: 'Top Moments from Gaming Conventions',
       username: 'ConventionsFan',
       publishedDate: 'July 4, 2024',
-      replies: 2, 
-      views: 0, 
+      replies: 6, 
+      views: 25, 
       category: 'Highlights'
     }
   ];
 
   const defaultPics = [default1, default2, default3, default4, default5, default6, default7, default8];
 
-  const filteredThreads = threads.filter(thread => thread.category === category);
+
+
+  const location = useLocation();
+  
+  const queryParams = new URLSearchParams(location.search);
+  const parseArrayParam = (param) => param ? param.split(',').map(item => item.trim()) : [];
+
+  const filters = {
+    title: queryParams.get('title') || '',
+    author: queryParams.get('author') || '',
+    categories: parseArrayParam(queryParams.get('categories') || ''),
+    viewCount: parseArrayParam(queryParams.get('viewCount') || ''),
+    replyCount: parseArrayParam(queryParams.get('replyCount') || ''),
+  };
+
+  const isWithinRange = (value, ranges) => {
+    if (ranges.length === 0) return true;
+  
+    const numValue = Number(value);
+  
+    return ranges.some(range => {
+      if (range === '1000+') {
+        return numValue >= 1000;
+      } else if (range === '100+') {
+        return numValue >= 100;
+      }
+      const [min, max] = range.split('-').map(Number);
+  
+      if (isNaN(max)) {
+        return numValue >= min;
+      }
+  
+      return numValue >= min && numValue <= max;
+    });
+  };
+
+  let filteredThreads;
+
+  if (searchQuery) {
+    console.log("HERE");
+    filteredThreads = threads.filter(thread => 
+      thread.threadName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  } else if (category) {
+    console.log("HERE");
+    filteredThreads = threads.filter(thread => 
+      thread.category === category
+    );
+  } else {
+    console.log("HERE");
+    filteredThreads = threads.filter(thread => {
+      const matchesTitle = filters.title ? thread.threadName.toLowerCase().includes(filters.title.toLowerCase()) : true;
+      const matchesAuthor = filters.author ? thread.username.toLowerCase().includes(filters.author.toLowerCase()) : true;
+      const matchesCategory = filters.categories.length > 0 ? filters.categories.some(cat => thread.category === cat) : true;
+      const matchesViewCount = isWithinRange(thread.views, filters.viewCount);
+      const matchesReplyCount = isWithinRange(thread.replies, filters.replyCount);
+  
+      return matchesTitle && matchesAuthor && matchesCategory && matchesViewCount && matchesReplyCount;
+    });
+  }
 
   return (
     <div className="forum-page">
-      <h1 className="forum-title">{category} Forum</h1>
-      <Link to="/CreateThread" className="create-thread-button">
-        Create Thread
-      </Link>
+      <div className="breadcrumbs">
+        <Link to="/">Home</Link> &gt; <Link to="/Forums">Forums</Link> &gt;<span>{category || 'Search Results'}</span>
+      </div>
+      <h1 className="forum-title">{category ? `${category} Forum` : 'Search Results'}</h1>
+      {category && (
+        <Link to={`/ForumPage/${category}/CreateThread`} className="create-thread-button">
+          Create Thread
+        </Link>
+      )}
       <div className="threads-container">
-        {filteredThreads.map((thread, index) => {
-          const picNumber = index % defaultPics.length;
-          return (
-            <Link to={`/Thread/${thread.id}`} className="thread-box" key={thread.id}>
-              <img src={defaultPics[picNumber]} alt="Profile" className="profile-pic-forum" />
-              <div className="thread-content">
-                <h2 className="thread-name">{thread.threadName}</h2>
-                <p className="thread-info">
-                  {thread.username} | {thread.publishedDate}
-                </p>
-              </div>
-              <div className="thread-stats">
-                <span>Replies: {thread.replies}</span>
-                <span>Views: {thread.views}</span>
-              </div>
-            </Link>
-          );
-        })}
+        {filteredThreads.length > 0 ? (
+          filteredThreads.map((thread, index) => {
+            const picNumber = index % defaultPics.length;
+            return (
+              <Link to={`/ForumPage/${thread.category}/Thread/${thread.id}`} className="thread-box" key={thread.id}>
+                <img src={defaultPics[picNumber]} alt="Profile" className="profile-pic-forum" />
+                <div className="thread-content">
+                  <h2 className="thread-name">{thread.threadName}</h2>
+                  <p className="thread-info">
+                    {thread.username} | {thread.publishedDate}
+                  </p>
+                  <p className="thread-info">
+                    {thread.category} Forum
+                  </p>
+                </div>
+                <div className="thread-stats">
+                  <span>Replies: {thread.replies}</span>
+                  <span>Views: {thread.views}</span>
+                </div>
+              </Link>
+            );
+          })
+        ) : (
+          <div className="search-no-result"> No threads found </div>
+        )}
       </div>
     </div>
   );

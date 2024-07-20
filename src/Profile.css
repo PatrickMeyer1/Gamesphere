@@ -8,20 +8,14 @@
   background: linear-gradient(to bottom, #454265, #191822);
   color: black;
   height: 100%;
-  padding: 50px 0;
   font-family: 'Roboto', sans-serif;
 }
 
 .profile-header {
   display: flex;
   align-items: center;
-  width: 80%;
-  max-width: 600px;
-  background-color: #ebebeb;
   margin-bottom: 20px;
-  border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
 }
 
 .profile-pic-edit {
@@ -60,8 +54,7 @@
 }
 
 .profile-content {
-  width: 80%;
-  max-width: 600px;
+  width: 50%;
   background-color: #ebebeb;
   margin-bottom: 20px;
   border-radius: 8px;

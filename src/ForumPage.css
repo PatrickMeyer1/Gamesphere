@@ -6,9 +6,9 @@
   flex-direction: column;
   align-items: center;
   background: linear-gradient(to bottom, #454265, #191822);
-  height: 100vh;
+  min-height: 100vh;
+  margin-top: 0;
   color: black;
-  padding: 50px 0;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -17,15 +17,15 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 70px;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .threads-container {
-  width: 80%;
-  max-width: 800px;
+  width: 53%;
   background-color: #ebebeb;
   border-radius: 8px;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 20px;
 }
 
 .thread-box {
@@ -100,4 +100,9 @@
   
   .create-thread-button:hover {
     background-color: rgba(166, 0, 100, 0.9); 
+  }
+
+  .search-no-result {
+    padding: 20px;
+    font-size: 18px;
   }
