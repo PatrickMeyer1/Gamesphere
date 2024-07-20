@@ -7,7 +7,6 @@
     align-items: center;
     background: linear-gradient(to bottom, #454265, #191822);
     color: black;
-    padding: 40px 0; 
   }
   
   .forums-title {
@@ -19,8 +18,7 @@
   }
   
   .forum-category {
-    width: 80%;
-    max-width: 660px; 
+    width: 50%;
     background-color: #ebebeb;
     margin-bottom: 22px;
     border-radius: 9px; 
@@ -28,6 +26,7 @@
     box-shadow: 0 17px 22px rgba(0, 0, 0, 0.6); 
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
   
   .category-header {
@@ -66,9 +65,13 @@
   }
   
   .category-links {
-    display: flex;
+    display: none;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .category-links.expanded {
+    display: flex;
   }
   
   .category-links a {

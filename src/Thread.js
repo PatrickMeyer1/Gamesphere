@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation  } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import './Thread.css'; 
 import default1Pic from './assets/default1.png';
 import default2Pic from './assets/default2.png';
 import default3Pic from './assets/default3.png';
 import default4Pic from './assets/default4.png';
+import PFP from './assets/PFP.jpg';
 import clockPic from './assets/clock.png';
-import likePic from './assets/like.png';
-import dislikePic from './assets/dislike.png';
 import sharePic from './assets/share.png';
 import sendPic from './assets/send.png';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown, faShareSquare } from '@fortawesome/free-solid-svg-icons';
+
 function Thread() {
-    const { id } = useParams(); 
-    const [thread, setThread] = useState(null);
+
+  const tags = [
+    "New Release",
+    "Never Seen",
+    "Hidden Gem",
+    "Fan Favorite",
+    "Controversial",
+    "Tech Talk"
+  ];
 
     const threadData = [
         {
@@ -22,12 +31,14 @@ function Thread() {
         title: "Best Weapons in Gaming History",
         author: "YaBoy780",
         date: "July 2, 2024",
+        tags: [tags[4]],
         comments: [
           {
             id: 1,
             profilePic: default2Pic,
             author: "YaBoy780",
-            timeAgo: "27 minutes ago",
+            timeAgo: "27",
+            timeUnits: "minutes ago",
             likes: 10,
             dislikes: 2,
             shares: 5,
@@ -37,7 +48,8 @@ function Thread() {
             id: 2,
             profilePic: default3Pic,
             author: "1OfAK1nd",
-            timeAgo: "22 minutes ago",
+            timeAgo: "22",
+            timeUnits: "minutes ago",
             likes: 8,
             dislikes: 1,
             shares: 3,
@@ -47,7 +59,8 @@ function Thread() {
             id: 3,
             profilePic: default4Pic,
             author: "WUTT1440p",
-            timeAgo: "10 minutes ago",
+            timeAgo: "10",
+            timeUnits: "minutes ago",
             likes: 15,
             dislikes: 3,
             shares: 7,
@@ -57,7 +70,8 @@ function Thread() {
             id: 4,
             profilePic: default3Pic,
             author: "TheGooat900",
-            timeAgo: "9 minutes ago",
+            timeAgo: "9",
+            timeUnits: "minutes ago",
             likes: 12,
             dislikes: 0,
             shares: 2,
@@ -70,12 +84,14 @@ function Thread() {
             title: "Top FPS Games for PC",
             author: "ShooterPro",
             date: "June 30, 2024",
+            tags: [tags[2]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "ShooterPro",
-                timeAgo: "25 minutes ago",
+                timeAgo: "25",
+                timeUnits: "minutes ago",
                 likes: 12,
                 dislikes: 3,
                 shares: 6,
@@ -85,7 +101,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "FPSMaster",
-                timeAgo: "20 minutes ago",
+                timeAgo: "20",
+                timeUnits: "minutes ago",
                 likes: 10,
                 dislikes: 1,
                 shares: 4,
@@ -98,12 +115,14 @@ function Thread() {
             title: "Upcoming Strategy Games",
             author: "Strategist",
             date: "June 25, 2024",
+            tags: [tags[3], tags[1]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "Strategist",
-                timeAgo: "30 minutes ago",
+                timeAgo: "30",
+                timeUnits: "minutes ago",
                 likes: 15,
                 dislikes: 2,
                 shares: 8,
@@ -113,7 +132,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "WarGamer",
-                timeAgo: "28 minutes ago",
+                timeAgo: "28",
+                timeUnits: "minutes ago",
                 likes: 11,
                 dislikes: 1,
                 shares: 5,
@@ -126,12 +146,14 @@ function Thread() {
             title: "Best Indie Games of the Year",
             author: "IndieFan",
             date: "July 1, 2024",
+            tags: [tags[1], tags[2]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "IndieFan",
-                timeAgo: "32 minutes ago",
+                timeAgo: "32",
+                timeUnits: "minutes ago",
                 likes: 18,
                 dislikes: 4,
                 shares: 7,
@@ -141,7 +163,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "PixelArtDev",
-                timeAgo: "29 minutes ago",
+                timeAgo: "29",
+                timeUnits: "minutes ago",
                 likes: 14,
                 dislikes: 2,
                 shares: 6,
@@ -154,12 +177,14 @@ function Thread() {
             title: "Esports News and Updates",
             author: "EsportsGuru",
             date: "July 2, 2024",
+            tags: [tags[5], tags[1]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "EsportsGuru",
-                timeAgo: "35 minutes ago",
+                timeAgo: "35",
+                timeUnits: "minutes ago",
                 likes: 20,
                 dislikes: 3,
                 shares: 10,
@@ -169,7 +194,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "CSGOPro",
-                timeAgo: "33 minutes ago",
+                timeAgo: "33",
+                timeUnits: "minutes ago",
                 likes: 16,
                 dislikes: 2,
                 shares: 8,
@@ -182,12 +208,14 @@ function Thread() {
             title: "Hardware Recommendations for Gaming",
             author: "Techie",
             date: "June 28, 2024",
+            tags: [tags[2], tags[1]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "Techie",
-                timeAgo: "40 minutes ago",
+                timeAgo: "40",
+                timeUnits: "minutes ago",
                 likes: 25,
                 dislikes: 5,
                 shares: 12,
@@ -197,7 +225,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "PCMasterRace",
-                timeAgo: "38 minutes ago",
+                timeAgo: "38",
+                timeUnits: "minutes ago",
                 likes: 22,
                 dislikes: 4,
                 shares: 10,
@@ -210,12 +239,14 @@ function Thread() {
             title: "Top 10 Mobile Games",
             author: "MobileGamer",
             date: "June 27, 2024",
+            tags: [tags[4], tags[1]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "MobileGamer",
-                timeAgo: "42 minutes ago",
+                timeAgo: "42",
+                timeUnits: "minutes ago",
                 likes: 30,
                 dislikes: 6,
                 shares: 15,
@@ -225,7 +256,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "CasualGamer",
-                timeAgo: "39 minutes ago",
+                timeAgo: "39",
+                timeUnits: "minutes ago",
                 likes: 28,
                 dislikes: 5,
                 shares: 13,
@@ -238,12 +270,14 @@ function Thread() {
             title: "Best RPG Games of 2024",
             author: "Gamer123",
             date: "July 2, 2024",
+            tags: [tags[5], tags[4]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "Gamer123",
-                timeAgo: "27 minutes ago",
+                timeAgo: "27",
+                timeUnits: "minutes ago",
                 likes: 10,
                 dislikes: 2,
                 shares: 5,
@@ -253,7 +287,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "RPGFanatic",
-                timeAgo: "22 minutes ago",
+                timeAgo: "22",
+                timeUnits: "minutes ago",
                 likes: 8,
                 dislikes: 1,
                 shares: 3,
@@ -263,7 +298,8 @@ function Thread() {
                 id: 3,
                 profilePic: default4Pic,
                 author: "QuestMaster",
-                timeAgo: "10 minutes ago",
+                timeAgo: "10",
+                timeUnits: "minutes ago",
                 likes: 15,
                 dislikes: 3,
                 shares: 7,
@@ -273,7 +309,8 @@ function Thread() {
                 id: 4,
                 profilePic: default3Pic,
                 author: "RPGGuru",
-                timeAgo: "9 minutes ago",
+                timeAgo: "9",
+                timeUnits: "minutes ago",
                 likes: 12,
                 dislikes: 0,
                 shares: 2,
@@ -286,12 +323,14 @@ function Thread() {
             title: "Latest Action Games Releases",
             author: "ActionFanatic",
             date: "July 3, 2024",
+            tags: [tags[5], tags[3]],
             comments: [
               {
                 id: 1,
                 profilePic: default1Pic,
                 author: "ActionFanatic",
-                timeAgo: "5 minutes ago",
+                timeAgo: "5",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 1,
                 shares: 2,
@@ -301,7 +340,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "GamerX",
-                timeAgo: "10 minutes ago",
+                timeAgo: "10",
+                timeUnits: "minutes ago",
                 likes: 3,
                 dislikes: 0,
                 shares: 1,
@@ -314,12 +354,14 @@ function Thread() {
             title: "Exploring the World of Adventure Games",
             author: "AdventureSeek",
             date: "July 1, 2024",
+            tags: [tags[2], tags[3]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "AdventureSeek",
-                timeAgo: "7 minutes ago",
+                timeAgo: "7",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 2,
@@ -329,7 +371,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "GameExplorer",
-                timeAgo: "12 minutes ago",
+                timeAgo: "12",
+                timeUnits: "minutes ago",
                 likes: 2,
                 dislikes: 1,
                 shares: 1,
@@ -342,12 +385,14 @@ function Thread() {
             title: "Strategic Insights for Competitive Gaming",
             author: "CompGamer",
             date: "July 2, 2024",
+            tags: [tags[1], tags[3]],
             comments: [
               {
                 id: 1,
                 profilePic: default1Pic,
                 author: "CompGamer",
-                timeAgo: "8 minutes ago",
+                timeAgo: "8",
+                timeUnits: "minutes ago",
                 likes: 6,
                 dislikes: 2,
                 shares: 3,
@@ -357,7 +402,8 @@ function Thread() {
                 id: 2,
                 profilePic: default4Pic,
                 author: "StrategistX",
-                timeAgo: "15 minutes ago",
+                timeAgo: "15",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 2,
@@ -370,12 +416,14 @@ function Thread() {
             title: "Retro Gaming Revival: Nostalgia or Necessity?",
             author: "RetroGamer",
             date: "July 3, 2024",
+            tags: [tags[5], tags[1]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "RetroGamer",
-                timeAgo: "6 minutes ago",
+                timeAgo: "6",
+                timeUnits: "minutes ago",
                 likes: 3,
                 dislikes: 1,
                 shares: 1,
@@ -385,7 +433,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "NostalgiaFan",
-                timeAgo: "11 minutes ago",
+                timeAgo: "11",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 0,
                 shares: 2,
@@ -398,12 +447,14 @@ function Thread() {
             title: "Peripherals Buying Guide for Gamers",
             author: "TechEnthusiast",
             date: "July 1, 2024",
+            tags: [tags[2], tags[4]],
             comments: [
               {
                 id: 1,
                 profilePic: default1Pic,
                 author: "TechEnthusiast",
-                timeAgo: "9 minutes ago",
+                timeAgo: "9",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 2,
@@ -413,7 +464,8 @@ function Thread() {
                 id: 2,
                 profilePic: default4Pic,
                 author: "GamingExpert",
-                timeAgo: "14 minutes ago",
+                timeAgo: "14",
+                timeUnits: "minutes ago",
                 likes: 3,
                 dislikes: 1,
                 shares: 1,
@@ -426,12 +478,14 @@ function Thread() {
             title: "Console Wars: Which Console Should You Choose?",
             author: "ConsoleGamer",
             date: "July 2, 2024",
+            tags: [tags[2], tags[3]],
             comments: [
               {
                 id: 1,
                 profilePic: default1Pic,
                 author: "ConsoleGamer",
-                timeAgo: "10 minutes ago",
+                timeAgo: "10",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 2,
                 shares: 2,
@@ -441,7 +495,8 @@ function Thread() {
                 id: 2,
                 profilePic: default2Pic,
                 author: "TechReviewer",
-                timeAgo: "13 minutes ago",
+                timeAgo: "13",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 1,
@@ -454,12 +509,14 @@ function Thread() {
             title: "Best Mobile Phones for Mobile Gaming",
             author: "MobileGaming",
             date: "July 3, 2024",
+            tags: [tags[2], tags[5]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "MobileGaming",
-                timeAgo: "7 minutes ago",
+                timeAgo: "7",
+                timeUnits: "minutes ago",
                 likes: 6,
                 dislikes: 1,
                 shares: 3,
@@ -469,7 +526,8 @@ function Thread() {
                 id: 2,
                 profilePic: default4Pic,
                 author: "PhoneGamer",
-                timeAgo: "12 minutes ago",
+                timeAgo: "12",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 2,
@@ -482,12 +540,14 @@ function Thread() {
             title: "Esports Tournaments Recap",
             author: "EsportsEn10",
             date: "July 1, 2024",
+            tags: [tags[1], tags[2]],
             comments: [
               {
                 id: 1,
                 profilePic: default4Pic,
                 author: "EsportsEn10",
-                timeAgo: "8 minutes ago",
+                timeAgo: "8",
+                timeUnits: "minutes ago",
                 likes: 8,
                 dislikes: 2,
                 shares: 4,
@@ -497,7 +557,8 @@ function Thread() {
                 id: 2,
                 profilePic: default2Pic,
                 author: "EsportsFan",
-                timeAgo: "15 minutes ago",
+                timeAgo: "15",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 1,
                 shares: 3,
@@ -510,12 +571,14 @@ function Thread() {
             title: "Team Strategies for Competitive Play",
             author: "TeamLeader",
             date: "July 2, 2024",
+            tags: [tags[1], tags[3]],
             comments: [
               {
                 id: 1,
                 profilePic: default1Pic,
                 author: "TeamLeader",
-                timeAgo: "9 minutes ago",
+                timeAgo: "9",
+                timeUnits: "minutes ago",
                 likes: 7,
                 dislikes: 1,
                 shares: 3,
@@ -525,7 +588,8 @@ function Thread() {
                 id: 2,
                 profilePic: default4Pic,
                 author: "CompetitiveGuy",
-                timeAgo: "14 minutes ago",
+                timeAgo: "14",
+                timeUnits: "minutes ago",
                 likes: 6,
                 dislikes: 0,
                 shares: 2,
@@ -538,12 +602,14 @@ function Thread() {
             title: "Gaming News Roundup",
             author: "GamingNews",
             date: "July 3, 2024",
+            tags: [tags[1], tags[4]],
             comments: [
               {
                 id: 1,
                 profilePic: default2Pic,
                 author: "GamingNews",
-                timeAgo: "6 minutes ago",
+                timeAgo: "6",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 1,
                 shares: 2,
@@ -553,7 +619,8 @@ function Thread() {
                 id: 2,
                 profilePic: default3Pic,
                 author: "NewsWatcher",
-                timeAgo: "11 minutes ago",
+                timeAgo: "11",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 1,
@@ -566,12 +633,14 @@ function Thread() {
             title: "Highlights from E3 2024",
             author: "E3Highlights",
             date: "July 1, 2024",
+            tags: [tags[1], tags[5]],
             comments: [
               {
                 id: 1,
                 profilePic: default3Pic,
                 author: "E3Highlights",
-                timeAgo: "7 minutes ago",
+                timeAgo: "7",
+                timeUnits: "minutes ago",
                 likes: 6,
                 dislikes: 2,
                 shares: 3,
@@ -581,7 +650,8 @@ function Thread() {
                 id: 2,
                 profilePic: default2Pic,
                 author: "E3Fanatic",
-                timeAgo: "12 minutes ago",
+                timeAgo: "12",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 1,
                 shares: 2,
@@ -594,12 +664,14 @@ function Thread() {
             title: "Best FPS Games of the Year",
             author: "FPSGamer",
             date: "July 2, 2024",
+            tags: [tags[2], tags[1]],
             comments: [
               {
                 id: 1,
                 author: "FPSGamer",
                 profilePic: default2Pic,
-                timeAgo: "5 minutes ago",
+                timeAgo: "5",
+                timeUnits: "minutes ago",
                 likes: 3,
                 dislikes: 1,
                 shares: 2,
@@ -609,7 +681,8 @@ function Thread() {
                 id: 2,
                 author: "ShooterFan",
                 profilePic: default3Pic,
-                timeAgo: "10 minutes ago",
+                timeAgo: "10",
+                timeUnits: "minutes ago",
                 likes: 2,
                 dislikes: 0,
                 shares: 1,
@@ -622,12 +695,14 @@ function Thread() {
             title: "Discussing Storytelling in Games",
             author: "StoryLover",
             date: "July 3, 2024",
+            tags: [tags[2], tags[3]],
             comments: [
               {
                 id: 1,
                 author: "StoryLover",
                 profilePic: default3Pic,
-                timeAgo: "7 minutes ago",
+                timeAgo: "7",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 2,
@@ -637,7 +712,8 @@ function Thread() {
                 id: 2,
                 author: "NarrativeExpert",
                 profilePic: default4Pic,
-                timeAgo: "12 minutes ago",
+                timeAgo: "12",
+                timeUnits: "minutes ago",
                 likes: 3,
                 dislikes: 1,
                 shares: 1,
@@ -650,12 +726,14 @@ function Thread() {
             title: "Favorite Gaming Moments of All Time",
             author: "MemorableGuy",
             date: "July 4, 2024",
+            tags: [tags[2], tags[4]],
             comments: [
               {
                 id: 1,
                 author: "MemorableGuy",
                 profilePic: default2Pic,
-                timeAgo: "15 minutes ago",
+                timeAgo: "15",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 0,
                 shares: 3,
@@ -665,7 +743,8 @@ function Thread() {
                 id: 2,
                 author: "NostalgicPlayer",
                 profilePic: default3Pic,
-                timeAgo: "20 minutes ago",
+                timeAgo: "20",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 1,
                 shares: 2,
@@ -678,12 +757,14 @@ function Thread() {
             title: "Building the Ultimate Gaming PC",
             author: "PCMasterBuild",
             date: "July 4, 2024",
+            tags: [tags[2], tags[5]],
             comments: [
               {
                 id: 1,
                 author: "PCMasterBuild",
                 profilePic: default4Pic,
-                timeAgo: "25 minutes ago",
+                timeAgo: "25",
+                timeUnits: "minutes ago",
                 likes: 7,
                 dislikes: 1,
                 shares: 4,
@@ -693,7 +774,8 @@ function Thread() {
                 id: 2,
                 author: "TechEnthusiast",
                 profilePic: default1Pic,
-                timeAgo: "30 minutes ago",
+                timeAgo: "30",
+                timeUnits: "minutes ago",
                 likes: 6,
                 dislikes: 0,
                 shares: 3,
@@ -706,12 +788,14 @@ function Thread() {
             title: "Best Gaming Keyboards for 2024",
             author: "KeyboardEmp",
             date: "July 4, 2024",
+            tags: [tags[4], tags[1]],
             comments: [
               {
                 id: 1,
                 author: "KeyboardEmp",
                 profilePic: default1Pic,
-                timeAgo: "18 minutes ago",
+                timeAgo: "18",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 2,
@@ -721,7 +805,8 @@ function Thread() {
                 id: 2,
                 author: "GamingSetup",
                 profilePic: default2Pic,
-                timeAgo: "22 minutes ago",
+                timeAgo: "22",
+                timeUnits: "minutes ago",
                 likes: 3,
                 dislikes: 1,
                 shares: 1,
@@ -734,12 +819,14 @@ function Thread() {
             title: "Console Exclusive Games Discussion",
             author: "ConsoleGamer",
             date: "July 4, 2024",
+            tags: [tags[4], tags[2]],
             comments: [
               {
                 id: 1,
                 author: "ConsoleGamer",
                 profilePic: default1Pic,
-                timeAgo: "20 minutes ago",
+                timeAgo: "20",
+                timeUnits: "minutes ago",
                 likes: 6,
                 dislikes: 1,
                 shares: 3,
@@ -749,7 +836,8 @@ function Thread() {
                 id: 2,
                 author: "ExclusiveGamer",
                 profilePic: default4Pic,
-                timeAgo: "25 minutes ago",
+                timeAgo: "25",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 0,
                 shares: 2,
@@ -762,12 +850,14 @@ function Thread() {
             title: "Gaming Performance on Latest Smartphones",
             author: "MobileGamer",
             date: "July 4, 2024",
+            tags: [tags[4], tags[3]],
             comments: [
               {
                 id: 1,
                 author: "MobileGamer",
                 profilePic: default1Pic,
-                timeAgo: "15 minutes ago",
+                timeAgo: "15",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 0,
                 shares: 3,
@@ -777,7 +867,8 @@ function Thread() {
                 id: 2,
                 author: "TechReview",
                 profilePic: default4Pic,
-                timeAgo: "20 minutes ago",
+                timeAgo: "20",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 1,
                 shares: 2,
@@ -790,12 +881,14 @@ function Thread() {
             title: "Future of Esports Tournaments",
             author: "EsportsEn10",
             date: "July 4, 2024",
+            tags: [tags[4], tags[5]],
             comments: [
               {
                 id: 1,
                 author: "EsportsEn10",
                 profilePic: default4Pic,
-                timeAgo: "18 minutes ago",
+                timeAgo: "18",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 2,
@@ -805,7 +898,8 @@ function Thread() {
                 id: 2,
                 author: "ProGamer",
                 profilePic: default3Pic,
-                timeAgo: "22 minutes ago",
+                timeAgo: "22",
+                timeUnits: "minutes ago",
                 likes: 3,
                 dislikes: 1,
                 shares: 1,
@@ -818,12 +912,14 @@ function Thread() {
             title: "Strategies for Building a Competitive Gaming Team",
             author: "TeamLeader",
             date: "July 4, 2024",
+            tags: [tags[5], tags[1]],
             comments: [
               {
                 id: 1,
                 author: "TeamLeader",
                 profilePic: default3Pic,
-                timeAgo: "20 minutes ago",
+                timeAgo: "20",
+                timeUnits: "minutes ago",
                 likes: 6,
                 dislikes: 1,
                 shares: 3,
@@ -833,7 +929,8 @@ function Thread() {
                 id: 2,
                 author: "Strategist",
                 profilePic: default1Pic,
-                timeAgo: "25 minutes ago",
+                timeAgo: "25",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 0,
                 shares: 2,
@@ -846,13 +943,15 @@ function Thread() {
             title: "Latest Gaming Industry News",
             author: "GamingInsider",
             date: "July 4, 2024",
+            tags: [tags[4], tags[2]],
             comments: [
               {
                 id: 1,
                 profilePic: 'path_to_profile_picture.jpg',
                 author: "GamingInsider",
                 profilePic: default2Pic,
-                timeAgo: "18 minutes ago",
+                timeAgo: "18",
+                timeUnits: "minutes ago",
                 likes: 4,
                 dislikes: 0,
                 shares: 2,
@@ -863,7 +962,8 @@ function Thread() {
                 profilePic: 'path_to_profile_picture.jpg',
                 author: "IndustryWatch",
                 profilePic: default3Pic,
-                timeAgo: "22 minutes ago",
+                timeAgo: "22",
+                timeUnits: "minutes ago",
                 likes: 3,
                 dislikes: 1,
                 shares: 1,
@@ -876,12 +976,14 @@ function Thread() {
             title: "Top Moments from Gaming Conventions",
             author: "ConventionsFan",
             date: "July 4, 2024",
+            tags: [tags[5], tags[3]],
             comments: [
               {
                 id: 1,
                 author: "ConventionsFan",
                 profilePic: default1Pic,
-                timeAgo: "20 minutes ago",
+                timeAgo: "20",
+                timeUnits: "minutes ago",
                 likes: 6,
                 dislikes: 1,
                 shares: 3,
@@ -891,7 +993,8 @@ function Thread() {
                 id: 2,
                 author: "EventWatcher",
                 profilePic: default3Pic,
-                timeAgo: "25 minutes ago",
+                timeAgo: "25",
+                timeUnits: "minutes ago",
                 likes: 5,
                 dislikes: 0,
                 shares: 2,
@@ -902,29 +1005,96 @@ function Thread() {
 
     ];
 
+    const { id, category } = useParams(); 
+    const location = useLocation();
+    const [thread, setThread] = useState(null);
+    const [isThreadSet, setIsThreadSet] = useState(false);
+  
     const [showSelectMenu, setShowSelectMenu] = useState(false);
-  const [sortMethod, setSortMethod] = useState('newest');
+    const [sortMethod, setSortMethod] = useState('oldest');
+    const [commentInput, setCommentInput] = useState('');
+    const [likedComments, setLikedComments] = useState({});
+    const [dislikedComments, setDislikedComments] = useState({});
+  
+    const toggleSelectMenu = () => {
+      setShowSelectMenu(!showSelectMenu);
+    };
 
-  const toggleSelectMenu = () => {
-    setShowSelectMenu(!showSelectMenu);
+    const handleSortChange = (method) => {
+    setSortMethod(method);
+    setShowSelectMenu(false);
   };
 
+  const sortedComments = () => {
+    if (!thread) return [];
+
+    let sorted = [...thread.comments];
+
+    if (sortMethod === 'newest') {
+      sorted.sort((a, b) => parseInt(a.timeAgo) - parseInt(b.timeAgo));
+    } else if (sortMethod === 'oldest') {
+      sorted.sort((a, b) => parseInt(b.timeAgo) - parseInt(a.timeAgo));
+    }
+    return sorted;
+  };
 
     useEffect(() => {
-        const selectedThread = threadData.find(thread => thread.id === parseInt(id));
-        if (selectedThread) {
-          setThread(selectedThread);
+      if (!isThreadSet) {
+        if (location.state && location.state.newThreadData) {
+          setThread(location.state.newThreadData);
+          setIsThreadSet(true);
         } else {
-          setThread(null);
+          const selectedThread = threadData.find(thread => thread.id === parseInt(id));
+          if (selectedThread) {
+            setThread(selectedThread);
+            setIsThreadSet(true);
+          }
         }
-      }, [id, threadData]);
+      }
+    }, [id, threadData, location.state, isThreadSet]);
     
+      const handleCommentSubmit = () => {
+        if (commentInput.trim() !== '') {
+          const newComment = {
+            id: thread.comments.length + 1,
+            author: 'TheNumber1',
+            profilePic: PFP,
+            timeAgo: "1",
+            timeUnits: "minute ago",
+            text: commentInput
+          };
+    
+          setThread(prevThread => ({
+            ...prevThread,
+            comments: [...prevThread.comments, newComment]
+          }));
+          setCommentInput('');
+        }
+      };
+
+      const handleDislikeClick = (commentId) => {
+        setDislikedComments((prev) => ({
+          ...prev,
+          [commentId]: !prev[commentId],
+        }));
+      };
+      
+      const handleLikeClick = (commentId) => {
+        setLikedComments((prev) => ({
+          ...prev,
+          [commentId]: !prev[commentId],
+        }));
+      };
+
       if (!thread) {
         return <div>No content</div>; 
       }
 
       return (
         <div className="thread-page-container">
+          <div className="breadcrumbs">
+            <Link to="/">Home</Link> &gt; <Link to="/Forums">Forums</Link> &gt; <Link to={`/ForumPage/${category}`}>{category}</Link> &gt; <span>Current Thread</span>
+          </div>
           <div className="thread-content-container">
             <div className="thread-header-post">
               <h2 className="thread-title-post">{thread.title}</h2>
@@ -934,48 +1104,33 @@ function Thread() {
                 <img src={clockPic} className="clock-icon icon" alt="Clock" />
                 <p>{thread.date}</p>
               </div>
-            </div>
-
-{/*  
-            <div className="breadcrumbs">
-                <Link to="/">Home</Link> &gt; 
-                <Link to="/ForumPage">General Forum</Link> &gt;
-                <span>Thread</span>
-            </div>
-*/}
-            <div className="pagination">
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>Next</li>
-          </ul>
-        </div>
-
-        <div className="sorting-dropdown">
-          <p className="sort-by-text">Sort by:</p>
-          <div className="sort-dropdown-container">
-            <div className="selected-sort" onClick={toggleSelectMenu} >
-              {sortMethod === 'newest' && 'Newest'}
-              {sortMethod === 'oldest' && 'Oldest'}
-              {sortMethod === 'top' && 'Top'}
-              <span className="dropdown-icon">&#9660;</span>
-            </div>
-            {showSelectMenu && (
-              <div className="select-menu">
-                <ul>
-                  <li>Newest</li>
-                  <li>Oldest</li>
-                  <li>Top</li>
-                </ul>
+              <div className="thread-tags">
+                {thread.tags.map((tag, index) => (
+                  <span key={index} className="thread-tag">{tag}</span>
+                ))}
               </div>
-            )}
-          </div>
-        </div>
+            </div>
     
-            {thread.comments.map(comment => (
+            <div className="sorting-dropdown">
+              <p className="sort-by-text">Sort by:</p>
+              <div className="sort-dropdown-container">
+                <div className={`selected-sort ${sortMethod}`} onClick={toggleSelectMenu}>
+                  {sortMethod === 'newest' && 'Newest'}
+                  {sortMethod === 'oldest' && 'Oldest'}
+                  <span className="dropdown-icon">&#9660;</span>
+                </div>
+                {showSelectMenu && (
+                  <div className="select-menu">
+                    <ul>
+                      <li onClick={() => handleSortChange('newest')}>Newest</li>
+                      <li onClick={() => handleSortChange('oldest')}>Oldest</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+    
+            {sortedComments().map(comment => (
               <div className="thread-comment" key={comment.id}>
                 <div className="thread-profile">
                   <img src={comment.profilePic} className="thread-profile-icon" alt="Profile" />
@@ -983,10 +1138,20 @@ function Thread() {
                 </div>
                 <div className="thread-main">
                   <div className="thread-time-like">
-                    <p>{comment.timeAgo}</p>
+                    <p>{comment.timeAgo} {comment.timeUnits}</p>
                     <div className="thread-like">
-                      <img src={likePic} className="like-share-icon" alt="Like" />
-                      <img src={dislikePic} className="like-share-icon" alt="Dislike" />
+                    <FontAwesomeIcon
+                      icon={faThumbsUp}
+                      className={`like-share-icon`}
+                      style={{ color: likedComments[comment.id] ? '#007bff' : '#770248' }}
+                      onClick={() => handleLikeClick(comment.id)}
+                    />
+                    <FontAwesomeIcon
+                      icon={faThumbsDown}
+                      className={`like-share-icon`}
+                      style={{ color: dislikedComments[comment.id] ? '#007bff' : '#770248' }}
+                      onClick={() => handleDislikeClick(comment.id)}
+                    />
                       <img src={sharePic} className="like-share-icon" alt="Share" />
                     </div>
                   </div>
@@ -998,21 +1163,13 @@ function Thread() {
             ))}
     
             <div className="thread-comment-post">
-              <textarea placeholder="Add a comment"></textarea>
-              <img src={sendPic} className="send-icon" alt="Send" />
+              <textarea
+                placeholder="Add a comment"
+                value={commentInput}
+                onChange={(e) => setCommentInput(e.target.value)}
+              ></textarea>
+              <img src={sendPic} className="send-icon" alt="Send" onClick={handleCommentSubmit} />
             </div>
-    
-            <div className="pagination">
-              <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>Next</li>
-              </ul>
-            </div>
-    
           </div>
         </div>
       );

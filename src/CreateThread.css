@@ -4,27 +4,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    min-height: 110vh;
     background: linear-gradient(to bottom, #454265, #191822);
     color: white;
     font-family: 'Roboto', sans-serif;
   }
   
   .thread-container {
-    margin-top: 50px;
+    margin-top: 0;
+    margin-bottom: 20px;
     background-color: #ebebeb;
     padding: 15px 60px 10px 60px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    width: 500px;
+    width: 45%;
   }
 
   .create-thread-header {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: black;
-    text-align: left;
+    text-align: center;
   }
   
   .form-group {
@@ -88,4 +89,53 @@
   
 .button-container button:hover {
     background-color: rgba(166, 0, 100, 0.9);
+}
+
+.confirmation-buttons button {
+  padding: 12px 40px;
+  border: none;
+  color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button.confirm-btn {
+  background-color: #4bce69;
+}
+
+button.cancel-btn {
+  background-color: #c74956;
+  
+  margin-left: 20px;
+}
+
+button.confirm-btn:hover,
+button.cancel-btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.confirmation-dialog {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.confirmation-dialog p {
+  color: black;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.confirmation-buttons {
+  text-align: center;
+  font-size: 20px;
+}
+
+.forum-name-create {
+  color: black;
+  margin-bottom: 20px;
+  font-size: 20px;
+  margin-top: 0px;
 }
